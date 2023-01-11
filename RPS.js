@@ -42,14 +42,19 @@ function playRound() {
     playerChoice = translateChoice(getComputerChoice());
     let gameString = `${playerChoice}${computerChoice}`;
     return WIN_CONDITIONs[gameString];
-    // switch (true) {
-    //     case (playerChoice==computerChoice):
-    //         return "draw";
-    //     case (gameString==""):
-    //         return "computerWins";
-    //     default:
-    //         return "playerWins";
-    // }
+}
+
+function checkForWinner(winsRecord) {
+    if (winsRecord.filter(x => x=="player").length == 3) {
+        console.log("player wins!");
+        return true;
+    } else if (winsRecord.filter(x => x=="computer").length == 3) {
+        console.log("computer wins!");
+        return true;
+    } else {
+        console.log("No one has won yet! Play another round 🎲")
+        return false;
+    }
 }
 
 function init() {
@@ -62,15 +67,7 @@ function init() {
         // play round and add result to wins list
         wins.push(playRound());
         // check win case
-        if (wins.filter(x => x=="player").length == 3) {
-            winCase = true;
-            console.log("player wins!");
-        } else if (wins.filter(x => x=="computer").length == 3) {
-            winCase = true;
-            console.log("computer wins!");
-        } else {
-            console.log("No one has won yet! Play another round 🎲")
-        }
+        winCase = checkForWinner(wins);
     };
 }
 
