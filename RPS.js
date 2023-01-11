@@ -1,6 +1,15 @@
 
 // rock paper scissors
 
+// assumes player is left and computer is right
+const WIN_CONDITIONs = {};
+WIN_CONDITIONs["rockscissors"] = "player";
+WIN_CONDITIONs["scissorsrock"] = "computer";
+WIN_CONDITIONs["paperrock"] = "player";
+WIN_CONDITIONs["rockpaper"] = "computer";
+WIN_CONDITIONs["scissorspaper"] = "player";
+WIN_CONDITIONs["paperscissors"] = "computer";
+
 function getComputerChoice() {
     // taken from mdn web docs
     // int from 0 to 2
@@ -26,25 +35,44 @@ function translateChoice(num) {
     }
 }
 
-// function playRound() {
-//     // play one round
-// }
+function playRound() {
+    // takes player and computer input and returns winner
+    computerChoice = translateChoice(computerChoice());
+    // automate player choice while we debug
+    playerChoice = translateChoice(computerChoice());
+    let gameString = `${playerChoice}${computerChoice}`;
+    return WIN_CONDITIONs[gameString];
+    // switch (true) {
+    //     case (playerChoice==computerChoice):
+    //         return "draw";
+    //     case (gameString==""):
+    //         return "computerWins";
+    //     default:
+    //         return "playerWins";
+    // }
+}
 
 function init() {
     // run game
     let winCase = false;
+    let wins = [];
     let computerChoice = null;
     let playerChoice = null;
     while (winCase == false) {
-        computerChoice = translateChoice(computerChoice());
-        // automate player choice while we debug
-        playerChoice = translateChoice(computerChoice())
-        winCase = true;
-    }
+        // play round and add result to wins list
+        wins.push(playRound());
+    };
+        // check win case
+        if (wins.filter(x => x=="player")) {
+            winCase = true;
+            console.log("player wins!");
+        } else if (wins.filter(x => x=="computer")) {
+            winCase = true;
+            console.log("computer wins!");
+        } else {
+            console.log("No one has won yet! Play another round 🎲")
+        }
 }
 
-console.log(
-    translateChoice(
-        getComputerChoice()
-    )
-);
+// play
+init();
