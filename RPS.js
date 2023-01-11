@@ -37,9 +37,9 @@ function translateChoice(num) {
 
 function playRound() {
     // takes player and computer input and returns winner
-    computerChoice = translateChoice(computerChoice());
+    computerChoice = translateChoice(getComputerChoice());
     // automate player choice while we debug
-    playerChoice = translateChoice(computerChoice());
+    playerChoice = translateChoice(getComputerChoice());
     let gameString = `${playerChoice}${computerChoice}`;
     return WIN_CONDITIONs[gameString];
     // switch (true) {
@@ -61,17 +61,17 @@ function init() {
     while (winCase == false) {
         // play round and add result to wins list
         wins.push(playRound());
-    };
         // check win case
-        if (wins.filter(x => x=="player")) {
+        if (wins.filter(x => x=="player").length == 3) {
             winCase = true;
             console.log("player wins!");
-        } else if (wins.filter(x => x=="computer")) {
+        } else if (wins.filter(x => x=="computer").length == 3) {
             winCase = true;
             console.log("computer wins!");
         } else {
             console.log("No one has won yet! Play another round 🎲")
         }
+    };
 }
 
 // play
