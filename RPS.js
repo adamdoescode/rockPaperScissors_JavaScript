@@ -23,7 +23,7 @@ function translateChoice(num) {
     if (num in [0,1,2]) {
         return rpsOptions[num];
     } else {
-        console.log("not a valid number");
+        writeToPage("not a valid number");
     }
 }
 
@@ -42,10 +42,10 @@ function playRound() {
     playerChoice = translateChoice(getComputerChoice());
     let gameString = `${playerChoice}${computerChoice}`;
     if (WIN_CONDITIONs[gameString] == undefined) {
-        console.log("draw");
+        writeToPage("draw");
         return null;
     } else {
-        console.log(WIN_CONDITIONs[gameString]);
+        writeToPage(WIN_CONDITIONs[gameString]);
         return WIN_CONDITIONs[gameString];
     }
 }
