@@ -1,14 +1,6 @@
 
 // rock paper scissors
 
-// assumes player is left and computer is right
-const WIN_CONDITIONs = {};
-WIN_CONDITIONs["rockscissors"] = "player";
-WIN_CONDITIONs["scissorsrock"] = "computer";
-WIN_CONDITIONs["paperrock"] = "player";
-WIN_CONDITIONs["rockpaper"] = "computer";
-WIN_CONDITIONs["scissorspaper"] = "player";
-WIN_CONDITIONs["paperscissors"] = "computer";
 
 function getComputerChoice() {
     // taken from mdn web docs
@@ -36,6 +28,14 @@ function translateChoice(num) {
 }
 
 function playRound() {
+    // assumes player is left and computer is right
+    const WIN_CONDITIONs = {};
+    WIN_CONDITIONs["rockscissors"] = "player";
+    WIN_CONDITIONs["scissorsrock"] = "computer";
+    WIN_CONDITIONs["paperrock"] = "player";
+    WIN_CONDITIONs["rockpaper"] = "computer";
+    WIN_CONDITIONs["scissorspaper"] = "player";
+    WIN_CONDITIONs["paperscissors"] = "computer";
     // takes player and computer input and returns winner
     computerChoice = translateChoice(getComputerChoice());
     // automate player choice while we debug
@@ -53,17 +53,21 @@ function playRound() {
 function checkForWinner(winsRecord) {
     if (winsRecord.filter(x => x=="player").length == 3) {
         console.log("player wins!");
+        writeToPage("player wins!");
         return true;
     } else if (winsRecord.filter(x => x=="computer").length == 3) {
         console.log("computer wins!");
+        writeToPage("computer wins!");
         return true;
     } else {
         console.log("No one has won yet! Play another round 🎲")
+        writeToPage("No one has won yet! Play another round 🎲")
         return false;
     }
 }
 
 function init() {
+    // clear all p tags inside div before playing a new game
     // run game
     let winCase = false;
     let wins = [];
@@ -77,5 +81,18 @@ function init() {
     };
 }
 
-// play
-init();
+function writeToPage(textToWrite) {
+    // writes messages to index.html page
+    const newP = document.createElement("p");
+    const newContent = document.createTextNode(textToWrite);
+    newP.appendChild(newContent);
+    // add to DOM
+    const gameDiv = document.getElementById("gamelog");
+    document.body.insertBefore(newP ,gameDiv);
+}
+
+// play on button click
+// nevermind we can do this in the button itself 😅
+
+// init();
+
