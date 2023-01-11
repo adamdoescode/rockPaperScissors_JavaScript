@@ -68,6 +68,10 @@ function checkForWinner(winsRecord) {
 
 function init() {
     // clear all p tags inside div before playing a new game
+    const gameDiv = document.getElementById("gamelog");
+    while (gameDiv.hasChildNodes()) {
+        gameDiv.removeChild(gameDiv.lastChild)
+    }
     // run game
     let winCase = false;
     let wins = [];
@@ -88,7 +92,7 @@ function writeToPage(textToWrite) {
     newP.appendChild(newContent);
     // add to DOM
     const gameDiv = document.getElementById("gamelog");
-    document.body.insertBefore(newP ,gameDiv);
+    gameDiv.insertAdjacentElement("beforeend", newP);
 }
 
 // play on button click
