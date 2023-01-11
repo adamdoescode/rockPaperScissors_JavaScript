@@ -41,7 +41,13 @@ function playRound() {
     // automate player choice while we debug
     playerChoice = translateChoice(getComputerChoice());
     let gameString = `${playerChoice}${computerChoice}`;
-    return WIN_CONDITIONs[gameString];
+    if (WIN_CONDITIONs[gameString] == undefined) {
+        console.log("draw");
+        return null;
+    } else {
+        console.log(WIN_CONDITIONs[gameString]);
+        return WIN_CONDITIONs[gameString];
+    }
 }
 
 function checkForWinner(winsRecord) {
