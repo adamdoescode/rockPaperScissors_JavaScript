@@ -1,0 +1,33 @@
+
+html body {
+    background-color: rgb(99, 5, 188);
+    color: beige;
+}
+
+h1 {
+    text-align: center;
+}
+
+.mainContentDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.playGameDiv {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#playButton {
+    background-color: lightskyblue;
+    border-radius: 25%;
+}
+
+#gamelog {
+    /* background-color: ; */
+}

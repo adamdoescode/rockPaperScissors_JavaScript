@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>RPS game</title>
 </head>
 <body>
-    <h1>Rock Paper Scissors Game!</h1>
-    <button id="playButton" onclick="init()">Play!</button>
-    <div id="gamelog">
-        <!-- content here? -->
+    <h1>Rock 💎 Paper 🧻 Scissors ✂ Game!</h1>
+    <div class="mainContentDiv">
+        <div class="playGameDiv">
+            <button id="playButton" onclick="init()">Play!</button>
+            <h2>Rounds</h2>
+            <div id="gamelog">
+                <!-- content here? -->
+            </div>
+        </div>
+        <div class="results">
+            <h2>Results</h2>
+            <div id="results">
+                <!-- content here? -->
+            </div>
+        </div>
     </div>
     <script src="RPS.js"></script>
 </body>
