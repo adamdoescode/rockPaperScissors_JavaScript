@@ -1,7 +1,6 @@
 
 // rock paper scissors
 
-
 function getComputerChoice() {
     // taken from mdn web docs
     // int from 0 to 2
@@ -74,11 +73,10 @@ function init() {
     while (gameDiv.hasChildNodes()) {
         gameDiv.removeChild(gameDiv.lastChild)
     }
+    writeToPage('🤯 New Round! 🤯')
     // run game
     let winCase = false;
     let wins = [];
-    let computerChoice = null;
-    let playerChoice = null;
     while (winCase == false) {
         // play round and add result to wins list
         wins.push(playRound());
