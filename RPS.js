@@ -38,14 +38,16 @@ function playRound() {
     WIN_CONDITIONs["paperscissors"] = "computer";
     // takes player and computer input and returns winner
     computerChoice = translateChoice(getComputerChoice());
+    writeToPage(`computer chose ${computerChoice}`);
     // automate player choice while we debug
     playerChoice = translateChoice(getComputerChoice());
+    writeToPage(`player chose ${playerChoice}`);
     let gameString = `${playerChoice}${computerChoice}`;
     if (WIN_CONDITIONs[gameString] == undefined) {
         writeToPage("draw");
         return null;
     } else {
-        writeToPage(WIN_CONDITIONs[gameString]);
+        writeToPage(`round won by ${WIN_CONDITIONs[gameString]}`);
         return WIN_CONDITIONs[gameString];
     }
 }
@@ -61,7 +63,7 @@ function checkForWinner(winsRecord) {
         return true;
     } else {
         console.log("No one has won yet! Play another round 🎲")
-        writeToPage("No one has won yet! Play another round 🎲")
+        // writeToPage("No one has won yet! Play another round 🎲")
         return false;
     }
 }
@@ -94,6 +96,9 @@ function writeToPage(textToWrite) {
     const gameDiv = document.getElementById("gamelog");
     gameDiv.insertAdjacentElement("beforeend", newP);
 }
+
+let round = 0;
+let 
 
 // play on button click
 // nevermind we can do this in the button itself 😅
