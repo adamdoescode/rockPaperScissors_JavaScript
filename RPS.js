@@ -55,10 +55,12 @@ function checkForWinner(winsRecord) {
     if (winsRecord.filter(x => x=="player").length == 3) {
         console.log("player wins!");
         writeToPage("player wins!");
+        writeResultsToPage("player wins!");
         return true;
     } else if (winsRecord.filter(x => x=="computer").length == 3) {
         console.log("computer wins!");
         writeToPage("computer wins!");
+        writeResultsToPage("computer wins!");
         return true;
     } else {
         console.log("No one has won yet! Play another round 🎲")
@@ -85,18 +87,29 @@ function init() {
     };
 }
 
-function writeToPage(textToWrite) {
+function writeResultsToPage(textToWrite) {
     // writes messages to index.html page
+    // generate newP element, add content to it, and then insert into results
     const newP = document.createElement("p");
     const newContent = document.createTextNode(textToWrite);
-    newP.appendChild(newContent);
+    newP.appendChild(newContent); // adds text to p
+    // add to DOM
+    const gameDiv = document.getElementById("results");
+    gameDiv.insertAdjacentElement("beforeend", newP);
+}
+
+function writeToPage(textToWrite) {
+    // writes messages to index.html page
+    // generate newP element, add content to it, and then insert into gamediv
+    const newP = document.createElement("p");
+    const newContent = document.createTextNode(textToWrite);
+    newP.appendChild(newContent); // adds text to p
     // add to DOM
     const gameDiv = document.getElementById("gamelog");
     gameDiv.insertAdjacentElement("beforeend", newP);
 }
 
 let round = 0;
-let 
 
 // play on button click
 // nevermind we can do this in the button itself 😅
