@@ -92,6 +92,11 @@ function writeResultsToPage(textToWrite) {
     // generate newP element, add content to it, and then insert into results
     const newP = document.createElement("p");
     const newContent = document.createTextNode(textToWrite);
+    if (textToWrite == "player wins!") {
+        newP.style.color = "#74bdcb";
+    } else if (textToWrite == "computer wins!") {
+        newP.style.color = "#ffa384";
+    }
     newP.appendChild(newContent); // adds text to p
     // add to DOM
     const gameDiv = document.getElementById("results");
