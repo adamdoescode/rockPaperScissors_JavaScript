@@ -7,7 +7,7 @@ function getComputerChoice() {
     // we use floor to turn the float from Math.random into an int
     let min = 0;
     let max = 2;
-    const num = Math.floor(Math.random() * (max-min+1) + min);
+    const num = Math.floor(Math.random() * (max - min + 1) + min);
     return num;
 }
 
@@ -19,7 +19,7 @@ function translateChoice(num) {
     rpsOptions[1] = 'paper';
     rpsOptions[2] = 'scissors';
     // return value
-    if (num in [0,1,2]) {
+    if (num in [0, 1, 2]) {
         return rpsOptions[num];
     } else {
         writeToPage("not a valid number");
@@ -36,10 +36,10 @@ function playRound() {
     WIN_CONDITIONs["scissorspaper"] = "player";
     WIN_CONDITIONs["paperscissors"] = "computer";
     // takes player and computer input and returns winner
-    computerChoice = translateChoice(getComputerChoice());
+    let computerChoice = translateChoice(getComputerChoice());
     writeToPage(`computer chose ${computerChoice}`);
     // automate player choice while we debug
-    playerChoice = translateChoice(getComputerChoice());
+    let playerChoice = translateChoice(getComputerChoice());
     writeToPage(`player chose ${playerChoice}`);
     let gameString = `${playerChoice}${computerChoice}`;
     if (WIN_CONDITIONs[gameString] == undefined) {
@@ -52,12 +52,12 @@ function playRound() {
 }
 
 function checkForWinner(winsRecord) {
-    if (winsRecord.filter(x => x=="player").length == 3) {
+    if (winsRecord.filter(x => x == "player").length == 3) {
         console.log("player wins!");
         writeToPage("player wins!");
         writeResultsToPage("player wins!");
         return true;
-    } else if (winsRecord.filter(x => x=="computer").length == 3) {
+    } else if (winsRecord.filter(x => x == "computer").length == 3) {
         console.log("computer wins!");
         writeToPage("computer wins!");
         writeResultsToPage("computer wins!");
@@ -84,7 +84,7 @@ function init() {
         wins.push(playRound());
         // check win case
         winCase = checkForWinner(wins);
-    };
+    }
 }
 
 function writeResultsToPage(textToWrite) {
@@ -113,8 +113,6 @@ function writeToPage(textToWrite) {
     const gameDiv = document.getElementById("gamelog");
     gameDiv.insertAdjacentElement("beforeend", newP);
 }
-
-let round = 0;
 
 // play on button click
 // nevermind we can do this in the button itself 😅
